@@ -82,7 +82,7 @@ module TwitterAds
 
       # TODO: pretty format the errors
       raise AdsError, res['errors'].first['code'] if res['errors']
-      res['data']
+      res
     end
 
 

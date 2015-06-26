@@ -10,22 +10,25 @@ require 'multi_json'
 
 
 # Usage:
-# Initialisation
+# Initialization
+#
+# Set twitter ads api endpoint via env var: TWITTER_ADS_API_ENDPOINT
+# defaults to: 'ads-api-sandbox.twitter.com'
 #
 # ads=TwitterAds::Client.new({consumer_key   :"YOUR_CONSUER_KEY",
 #	                        consumer_secret:"YOUR CONSUMER SECRET",
 #	                        access_token   :"YOUR ACCESS TOKEN",
 #	                        access_secret  :"YOUR ACCESS SECRET"})
 # get the list of accounts:
-#  ads.accounts
+# ads.accounts
 #
 # get info on a specfic account
-# account = ads.account[account_id]
+# account = ads.account(account_id)
 #
-#  get tailored_audience change
+# get tailored_audience change
 # accounts.tailored_audience_changes
 #
-#  get tailored audience change on a specific list
+# get tailored audience change on a specific list
 # accounts.tailoered_audience_changes list_id
 #
 # if the method does not exist, the easiest it to do:
@@ -36,7 +39,7 @@ require 'multi_json'
 
 module TwitterAds
 
-  ADS_API_ENDPOINT = 'ads-api.twitter.com'
+  ADS_API_ENDPOINT = ENV['TWITTER_ADS_API_ENDPOINT'] || 'ads-api-sandbox.twitter.com'
   TRACE = false
   UnauthorizedAccess = 'UNAUTHORIZED_ACCESS'
   class AdsError < StandardError
